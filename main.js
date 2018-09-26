@@ -218,7 +218,7 @@ function setup() {
             $("#title").html(desc)
             var top5 = Object.keys(state.beingHoveredData.top_5);
             $("#fthash").html(top5.map(v => "#" + v).join(", "))
-            $(".fol_count").html(state.beingHoveredData.followers)
+            $(".fol_count").html(state.beingHoveredData.followers+" followers | ")
             $(".tot_count").html(state.beingHoveredData.total)
             $(".pplthumbdiv").addClass("dimmed");
             $(`#${state.beingHovered}`).removeClass("dimmed");
