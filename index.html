@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13 x 29</title>
+</head>
+<link href="main.css" rel="stylesheet">
+
+<body>
+    <div class="bigoverlay">
+        <p class="overlytext">
+            <span id="ppl_loaded">0 / 377</span>
+        </p>
+        <div class="progressbar">
+            <div class="whitebar" style="width:0%">
+
+            </div>
+            <div class="greybar" style="width:100%">
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="message">
+            <p class="large">I am what I am, so take me as I am.</p>
+            <p>With these words, India became the 26th nation in the world to decriminialize homosexuality.</p>
+            <p>75% of the world today lives in a country where loving someone of the same gender is not a crime.</p>
+            <p>The 13 x 29 project tracks 13 fields with 29 people each, visualising how India reacted to this historic decision.</p>
+            <p>The verdict came on 11:30 am on 6th September, so the tweets were collected from 5th September 2018 to 8th September tracking how reactions came around the verdict.</p>
+            <a class="continue">Continue</a>
+        </div>
+        <div class="whiteMode">
+            <header>
+                <h4 id="featured"></h4>
+                <p id="title"></p>
+                <h4 id="fthash"></h4>   
+                <div class="answer">
+                    <span class="fol_count"></span><span> followers | </span>
+                    <span class="tot_count"></span><span> tweets</span>
+                </div>     
+
+
+            </header>
+            <div class="infoBox">
+                <h5>Clustering Coeffecient</h5>
+                <div class="answer"><span class="cc"></span></div>
+
+                <h5>Most Connected</h5>
+                <div class="answer"><span class="most"></span>&nbsp;<span class="most_val"></span></div>
+
+                <h5>Top Hashtags</h5>
+                <div class="answer"><span class="hashes"></span></div>
+                
+                <h5>Info</h5>
+                <p class="info_cat answer" style="padding-right:60px">
+                  Do excepteur sint tempor non sit et nostrud ex et ullamco ex. Anim nulla nostrud voluptate eu ex veniam aliqua amet cupidatat consectetur cupidatat anim. Est aute esse tempor in cupidatat commodo irure deserunt non nostrud commodo laboris ipsum. Id anim fugiat enim aute minim dolore incididunt est ut exercitation laboris tempor aute. Sint sunt non ut veniam ex. Veniam occaecat enim consectetur deserunt.
+                </p>
+
+            </div>
+            <div class="menu">
+                   
+                <div class="catox">
+                    <img class="logo" src="img/logo.png" />
+                    <div class="name" style="display:none">All</div>
+                </div>
+                <div class="cats">
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Government</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Opposition</div>
+                    </div>
+
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">States</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Faith</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Journalism</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Law</div>
+                    </div>
+
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Sports</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Bollywood</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Music</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Creativity</div>
+                    </div>
+                    <div class="cat cato" id="trig">
+                        <div class="control"></div>
+                        <div class="name">YouTube</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Entrepreneurship</div>
+                    </div>
+                    <div class="cat cato">
+                        <div class="control"></div>
+                        <div class="name">Forbes30Under30</div>
+                    </div>
+                    <div style="font-size:0.8em">
+                        <input type="checkbox" id="showhash" value="hashtags"> Show Hashtags<br>
+                        <input type="checkbox" id="showfoll" value="followers"> Show n(Followers)<br>
+                        <input type="checkbox" id="showtotal" value="total"> Show Total Tweets<br>
+                    </div>
+ 
+                </div>
+                <select class="mobDrop">
+                        <option value="Government">Government</option>
+                        <option value="Opposition">Opposition</option>
+                        <option value="States">States</option>
+                        <option value="Faith">Faith</option>
+                        <option value="Journalism">Journalism</option>
+                        <option value="Law">Law</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Bollywood">Bollywood</option>
+                        <option value="Music">Music</option>
+                        <option value="Creativity">Creativity</option>
+                        <option value="YouTube">YouTube</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Forbes30Under30">Forbes30Under30</option>
+                      </select>
+            </div>
+
+            <div id="tv">
+                <div class="show_tweet"></div>
+                <div class="show_person"></div>
+                <div class="show_date"></div>
+                
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+    <div id="p5container">
+
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+<!-- <script src="typed.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+    <script src = "springy.js"></script>
+    <script src = "springyui.js"></script>
+<script src="main.js"></script>
+
+</html>
