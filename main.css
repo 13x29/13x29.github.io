@@ -13,6 +13,16 @@ html,body{
     transition:0.5s all;
     bottom:0;
 }
+.fb_iframe_widget {
+    opacity:0;
+    position: fixed!important;
+    bottom: 25px;
+    right: -30px;
+    z-index:5555;
+}
+.fb_iframe_widget > span{
+    width:250px;
+}
 img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
@@ -127,29 +137,35 @@ border:3px solid rgb(111, 180, 226);
     position:fixed;
     bottom:0;
     right:0;
-    left:15vw;
-    height:20vh;
+    left:15vw; 
     padding:20px;
+    padding-bottom:0px;
+    z-index:100;
 
 }
 .show_date{
     font-size:12px;
     font-weight: bold;
+    background:rgba(255,255,255,0.89);
+    display: inline-block;
 }
 .hash{
     font-size:12px;
 }
 .show_tweet{
     max-width: 800px;
-    font-size:1.37em;
-    font-weight:bolder;
-    color:rgb(182, 182, 182);
+    font-size:1.4em;
+    color:rgb(82, 82, 82);
+    background:rgba(255,255,255,0.89);
 }
 .show_person{
     color:rgb(32, 123, 243);
     font-weight: bold;
     font-size:16px;
     margin-top:15px;
+    display: inline-block;
+    background:rgba(255,255,255,0.89);
+
 }
 
 #title{
@@ -173,7 +189,7 @@ padding-bottom:0;
 .infoBox{
     width:15vw;
     position:fixed;
-    top:10vh;
+    top:4vh;
     height:60vh;
     right:0;
 }

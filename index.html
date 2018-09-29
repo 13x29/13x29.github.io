@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
     <title>13 x 29 Project</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49711524-9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-49711524-9');
+    </script>
 </head>
 <link href="main.css" rel="stylesheet">
 
 <body>
+      <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Your like button code -->
+
+<div style="" class="fb-like" data-href="https://13x29.github.io" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
     <div class="bigoverlay">
         <p class="overlytext">
             <span id="ppl_loaded">0 / 377</span>
@@ -27,39 +55,45 @@
             <p>With these words, India became the 26th nation in the world to decriminialize homosexuality.</p>
             <p>75% of the world today lives in a country where loving someone of the same gender is not a crime.</p>
             <p>The 13 x 29 project tracks 13 fields with 29 people each, visualising how India reacted to this historic decision.</p>
-            <p>The verdict came on 11:30 am on 6th September, so the tweets were collected from 5th September 2018 to 8th September tracking how reactions came around the verdict.</p>
             <a class="continue">Continue</a>
         </div>
         <div class="whiteMode">
             <header>
                 <h4 id="featured"></h4>
                 <p id="title"></p>
-                <h4 id="fthash"></h4>   
+                <h4 id="fthash"></h4>
                 <div class="answer">
                     <span class="fol_count"></span>
                     <span class="tot_count"></span>
-                </div>     
+                </div>
 
 
             </header>
             <div class="infoBox">
-                <h5>Clustering Coeffecient</h5>
+                <h5>Average Clustering Coeffecient</h5>
                 <div class="answer"><span class="cc"></span></div>
+                <h5>CC for Verdict-Reactors</h5>
+                <div class="answer"><span class="t_cc"></span></div>
+                <h5>CC for Verdict-Non-Reactors</h5>
+                <div class="answer"><span class="nt_cc"></span></div>
 
                 <h5>Most Connected</h5>
                 <div class="answer"><span class="most"></span>&nbsp;<span class="most_val"></span></div>
 
                 <h5>Top Hashtags</h5>
                 <div class="answer"><span class="hashes"></span></div>
-                
+
                 <h5>Info</h5>
                 <p class="info_cat answer" style="padding-right:60px">
-                  Do excepteur sint tempor non sit et nostrud ex et ullamco ex. Anim nulla nostrud voluptate eu ex veniam aliqua amet cupidatat consectetur cupidatat anim. Est aute esse tempor in cupidatat commodo irure deserunt non nostrud commodo laboris ipsum. Id anim fugiat enim aute minim dolore incididunt est ut exercitation laboris tempor aute. Sint sunt non ut veniam ex. Veniam occaecat enim consectetur deserunt.
+                    Do excepteur sint tempor non sit et nostrud ex et ullamco ex. Anim nulla nostrud voluptate eu ex veniam aliqua amet cupidatat
+                    consectetur cupidatat anim. Est aute esse tempor in cupidatat commodo irure deserunt non nostrud commodo
+                    laboris ipsum. Id anim fugiat enim aute minim dolore incididunt est ut exercitation laboris tempor aute.
+                    Sint sunt non ut veniam ex. Veniam occaecat enim consectetur deserunt.
                 </p>
 
             </div>
             <div class="menu">
-                   
+
                 <div class="catox">
                     <img class="logo" src="img/logo.png" />
                     <div class="name" style="display:none">All</div>
@@ -124,30 +158,30 @@
                         <input type="checkbox" id="showfoll" value="followers"> Show n(Followers)<br>
                         <input type="checkbox" id="showtotal" value="total"> Show Total Tweets<br>
                     </div>
- 
+
                 </div>
                 <select class="mobDrop">
-                        <option value="Government">Government</option>
-                        <option value="Opposition">Opposition</option>
-                        <option value="States">States</option>
-                        <option value="Faith">Faith</option>
-                        <option value="Journalism">Journalism</option>
-                        <option value="Law">Law</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Bollywood">Bollywood</option>
-                        <option value="Music">Music</option>
-                        <option value="Creativity">Creativity</option>
-                        <option value="YouTube">YouTube</option>
-                        <option value="Entrepreneurship">Entrepreneurship</option>
-                        <option value="Forbes30Under30">Forbes30Under30</option>
-                      </select>
+                    <option value="Government">Government</option>
+                    <option value="Opposition">Opposition</option>
+                    <option value="States">States</option>
+                    <option value="Faith">Faith</option>
+                    <option value="Journalism">Journalism</option>
+                    <option value="Law">Law</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Bollywood">Bollywood</option>
+                    <option value="Music">Music</option>
+                    <option value="Creativity">Creativity</option>
+                    <option value="YouTube">YouTube</option>
+                    <option value="Entrepreneurship">Entrepreneurship</option>
+                    <option value="Forbes30Under30">Forbes30Under30</option>
+                </select>
             </div>
 
             <div id="tv">
                 <div class="show_tweet"></div>
                 <div class="show_person"></div>
                 <div class="show_date"></div>
-                
+
 
 
 
@@ -160,14 +194,16 @@
     <div id="p5container">
 
     </div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bab9670725ed2af"></script> 
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
 <!-- <script src="typed.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
-    <script src = "springy.js"></script>
-    <script src = "springyui.js"></script>
+<script src="springy.js"></script>
+<script src="springyui.js"></script>
 <script src="main.js"></script>
 
 </html>

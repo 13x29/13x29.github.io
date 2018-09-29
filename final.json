@@ -20,69 +20,95 @@
     },
     "cc":{
         "States": {
-            "most": "CMOfficeUP",
-            "most_val": 16,
-            "avg": 0.22539433746330298
+            "most": "pemakhandubjp",
+            "most_val": 11,
+            "avgCC": 0.3688013136288998,
+            "targetCC": 0,
+            "nontargetCC": 0.3688013136288998
         },
         "Government": {
             "most": "narendramodi",
-            "most_val": 28,
-            "avg": 0.6177544359231457
+            "most_val": 27,
+            "avgCC": 0.7745380888965443,
+            "targetCC": 0,
+            "nontargetCC": 0.7745380888965443
         },
         "Opposition": {
-            "most": "DeependerSHooda",
+            "most": "rahulgandhi",
             "most_val": 24,
-            "avg": 0.4309099120660059
+            "avgCC": 0.5176038799344019,
+            "targetCC": 0.6968253968253969,
+            "nontargetCC": 0.19747474747474747
         },
         "Journalism": {
-            "most": "rahulkanwal",
-            "most_val": 26,
-            "avg": 0.48995927742002077
+            "most": "ShekharGupta",
+            "most_val": 24,
+            "avgCC": 0.5538825763871137,
+            "targetCC": 0.6073630889807361,
+            "nontargetCC": 0.0
         },
         "Law": {
-            "most": "eminentjurist",
+            "most": "karunanundy",
             "most_val": 13,
-            "avg": 0.15537278813140884
+            "avgCC": 0.3363113897596655,
+            "targetCC": 0.41360544217687073,
+            "nontargetCC": 0.0
         },
         "Creativity": {
-            "most": "rashmibansal",
-            "most_val": 15,
-            "avg": 0.10878489326765188
+            "most": "Javedakhtarjadu",
+            "most_val": 8,
+            "avgCC": 0.15057471264367817,
+            "targetCC": 0.0,
+            "nontargetCC": 0.0
         },
         "Faith": {
-            "most": "shri8354",
-            "most_val": 12,
-            "avg": 0.11352938249489972
+            "most": "Swamy39",
+            "most_val": 10,
+            "avgCC": 0.08045977011494251,
+            "targetCC": 0.0,
+            "nontargetCC": 0.0
         },
         "Music": {
-            "most": "sid_mahadevan",
-            "most_val": 25,
-            "avg": 0.2553494760935778
+            "most": "arrahman",
+            "most_val": 19,
+            "avgCC": 0.3655968552520276,
+            "targetCC": 0.35641025641025637,
+            "nontargetCC": 0.39880952380952384
         },
         "Sports": {
-            "most": "gaGunNarang",
-            "most_val": 23,
-            "avg": 0.4982872836177221
+            "most": "sachin_rt",
+            "most_val": 22,
+            "avgCC": 0.5628876476239559,
+            "targetCC": 0.0,
+            "nontargetCC": 0.5296270601826157
         },
         "Entrepreneurship": {
-            "most": "SharmaShradha",
-            "most_val": 28,
-            "avg": 0.3528928199463055
+            "most": "amitabhk87",
+            "most_val": 20,
+            "avgCC": 0.4964096802572301,
+            "targetCC": 0.0,
+            "nontargetCC": 0.5022527472527473
         },
         "Forbes30Under30": {
             "most": "gauravmunjal",
             "most_val": 5,
-            "avg": 0.0896551724137931
+            "avgCC": 0.10344827586206896,
+            "targetCC": 0.0,
+            "nontargetCC": 0.0
         },
         "YouTube": {
             "most": "thetanmay",
-            "most_val": 24,
-            "avg": 0.3078682198970352
+            "most_val": 21,
+            "avgCC": 0.541773712095053,
+            "targetCC": 0.5297619047619048,
+            "nontargetCC": 0.45154061624649855
         },
         "Bollywood": {
             "most": "karanjohar",
-            "most_val": 27,
-            "avg": 0.5061407477524419
+            "most_val": 24,
+            "avgCC": 0.6470668787799695,
+            "targetCC": 0.7231466945752661,
+            "nontargetCC": 0.20740740740740737
         }
     },
     "peeps": [
@@ -3314,14 +3340,20 @@
             "related": 0
         },
         {
-            "name": "Vishwajith Sadananda",
-            "description": "Lawyer, master chef and Batman (by night)",
-            "username": "ASVishwajith",
-            "top_5": {},
+            "name": "arundhatikatju",
+            "description": "Litigator. Yoga teacher. Discovering New York, one borough at a time.",
+            "username": "arundhatikatju",
+            "top_5": {
+                "section377": 10,
+                "supremecourt": 2,
+                "india": 2,
+                "lgbt": 1,
+                "gst": 1
+            },
             "category": "Law",
-            "followers": 92,
-            "total": 0,
-            "related": 0
+            "followers": 839,
+            "total": 64,
+            "related": 25
         },
         {
             "name": "Avantika Mehta",
@@ -3423,14 +3455,20 @@
             "related": 0
         },
         {
-            "name": "Raghul Sudheesh",
-            "description": "Lawyer",
-            "username": "raghulsudheesh",
-            "top_5": {},
+            "name": "Pritha Srikumar Iyer",
+            "description": "",
+            "username": "PrithaSrikumar",
+            "top_5": {
+                "377quitindia": 1,
+                "opinion": 1,
+                "section377": 1,
+                "india": 1,
+                "supremecourt": 1
+            },
             "category": "Law",
-            "followers": 1130,
-            "total": 0,
-            "related": 0
+            "followers": 125,
+            "total": 11,
+            "related": 4
         },
         {
             "name": "Devanshi Singh",
@@ -7997,6 +8035,60 @@
             "txt": "Article 377: Getting On The Right Side Of The Issue. By opposing decriminalisation of homosexuality, a section of the cultural right is letting go of the opportunity to make Hinduism the most compatible belief system for modern societies https://t.co/2mU2PXdbCm",
             "category": "Faith"
         },
+
+        {
+            "username": "PrithaSrikumar",
+            "person": "Pritha Srikumar Iyer",
+            "date": 1536221445000,
+            "id_str": "1037697111108792325",
+            "txt": "RT @ajkashy: And it\u2019s done! #India\u2019s #SupremeCourt  firmly ousts our terrible colonial legacy. #377 struck down. #LGBT given #EqualRights.",
+            "category": "Law"
+        },
+        {
+            "username": "arundhatikatju",
+            "person": "arundhatikatju",
+            "date": 1536285502000,
+            "id_str": "1037965785707233280",
+            "txt": "RT @scroll_in: Opinion: #Section377 verdict is a new dawn not just for #LGBT rights but for individual liberties in India",
+            "category": "Law"
+        },
+        {
+            "username": "arundhatikatju",
+            "person": "arundhatikatju",
+            "date": 1536275851000,
+            "id_str": "1037925306265415681",
+            "txt": "What a morning. It will take some time for it to sink in. With #section377 gone we need a new hashtag...",
+            "category": "Law"
+        },
+        {
+            "username": "arundhatikatju",
+            "person": "arundhatikatju",
+            "date": 1536271061000,
+            "id_str": "1037905214160949248",
+            "txt": "RT @jainsonia6: Happy Rainbow day India! We are free from section #377 ! Happiness and Love to everyone! What are the chances of seeing 2 rainbows on the road today, I say as much as India’s moment of liberation! 😁 #spreadlove #equality #justicedone #Sec377",
+            "category": "Law"
+        },
+
+
+
+        {
+            "username": "arundhatikatju",
+            "person": "arundhatikatju",
+            "date": 1536202161000,
+            "id_str": "1037616229958254593",
+            "txt": "RT @parmeshs: I still get goosebumps when I remember what @MenakaGuruswamy said in court 'It is not just consensual sex between homosexual partners that this Court should recognise, but their love for each other. How strongly must you love knowing that you are unconvicted felons.' #Section377",
+            "category": "Law"
+        },
+
+        {
+            "username": "arundhatikatju",
+            "person": "arundhatikatju",
+            "date": 1536133418000,
+            "id_str": "1037327899270041602",
+            "txt": "This is a sign if there ever was one. We bump into @anjaligopalan on our way back to Delhi the day before the @NavtejJohar judgment is pronounced. Change is coming. @MenakaGuruswamy #Section377 https://t.co/bE9taCeOV4",
+            "category": "Law"
+        },
+
         {
             "username": "AgarwalGyan",
             "person": "\ud83c\uddee\ud83c\uddf3{\u0950}  \u091c\u094d\u091e\u093e\u0928 \u092a\u094d\u0930\u0915\u093e\u0936 \ud83d\ude03  {\u0950}\ud83c\uddee\ud83c\uddf3",
@@ -9653,7 +9745,9 @@
                 "Chandshekhar_a",
                 "vijayrpandey",
                 "avisinghesq",
-                "Sudhabharadwaj"
+                "Sudhabharadwaj",
+                "PrithaSrikumar",
+                "arundhatikatju"
             ],
             "eminentjurist": [
                 "MenakaGuruswamy",
@@ -9667,8 +9761,7 @@
                 "pvdinesh",
                 "penguinhowler",
                 "daniaditi",
-                "MVijay88",
-                "raghulsudheesh"
+                "MVijay88"
             ],
             "vijayrpandey": [
                 "MenakaGuruswamy",
@@ -9706,14 +9799,6 @@
                 "pbhushan1",
                 "Ghair_Kanooni"
             ],
-            "raghulsudheesh": [
-                "MenakaGuruswamy",
-                "pbhushan1",
-                "poovayya",
-                "karunanundy",
-                "vakeel_saheba",
-                "bitingfriends"
-            ],
             "Chandshekhar_a": [
                 "pbhushan1"
             ],
@@ -9733,7 +9818,8 @@
                 "avisinghesq",
                 "snarrain",
                 "Sudhabharadwaj",
-                "tame_wildcard"
+                "tame_wildcard",
+                "arundhatikatju"
             ],
             "vakeel_saheba": [
                 "pbhushan1",
@@ -9741,6 +9827,7 @@
                 "poovayya",
                 "Ghair_Kanooni",
                 "karunanundy",
+                "arundhatikatju",
                 "amitpai87",
                 "VakashaS",
                 "avisinghesq",
@@ -9766,9 +9853,6 @@
                 "pvdinesh",
                 "MVijay88"
             ],
-            "ASVishwajith": [
-                "pbhushan1"
-            ],
             "PrateekKChadha": [
                 "pbhushan1",
                 "poovayya",
@@ -9787,8 +9871,7 @@
                 "karunanundy",
                 "VakashaS",
                 "PrateekKChadha",
-                "snarrain",
-                "raghulsudheesh"
+                "snarrain"
             ],
             "MVijay88": [
                 "pbhushan1",
@@ -9799,7 +9882,6 @@
                 "VakashaS",
                 "penguinhowler",
                 "daniaditi",
-                "ASVishwajith",
                 "snarrain",
                 "tame_wildcard"
             ],
@@ -9830,7 +9912,22 @@
                 "karunanundy"
             ],
             "snarrain": [
-                "tame_wildcard"
+                "tame_wildcard",
+                "arundhatikatju"
+            ],
+            "PrithaSrikumar":[
+                "arundhatikatju",
+                "MenakaGuruswamy"
+            ],
+            "arundhatikatju":[
+                "MenakaGuruswamy",
+                "tame_wildcard",
+                "Sudhabharadwaj",
+                "snarrain",
+                "PrithaSrikumar",
+                "vakeel_saheba",
+                "karunanundy",
+                "pbhushan1"
             ]
         },
         "Creativity": {

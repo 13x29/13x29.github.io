@@ -56,7 +56,10 @@ $(".cato").on("click", function () {
     // var cat_info = state.core.category[new_cat];
     cat_info = state.core.cc[new_cat];
 
-    $(".cc").html(`${parseInt(cat_info["avg"] * 10000) / 100}% (${cat_info["avg"] > 0.45 ? "High" : cat_info["avg"] > 0.2 ? "Medium" : "Low"})`);
+    $(".cc").html(`${parseInt(cat_info["avgCC"] * 10000) / 100}% (${cat_info["avgCC"] > 0.45 ? "High" : cat_info["avgCC"] > 0.2 ? "Medium" : "Low"})`);
+    $(".t_cc").html(`${parseInt(cat_info["targetCC"] * 10000) / 100}% (${cat_info["targetCC"] > 0.45 ? "High" : cat_info["targetCC"] > 0.2 ? "Medium" : "Low"})`);
+    $(".nt_cc").html(`${parseInt(cat_info["nontargetCC"] * 10000) / 100}% (${cat_info["nontargetCC"] > 0.45 ? "High" : cat_info["nontargetCC"] > 0.2 ? "Medium" : "Low"})`);
+
     $(".most").html(cat_info["most"]);
     $(".most_val").html(`(${cat_info["most_val"]})`);
     $(".hashes").html(`${Object.entries(state.core.hashtags[new_cat]).map(v => `<div class="hash">${v[0]} (${v[1]})</div>`).join("")}`);
@@ -178,10 +181,10 @@ function setup() {
             const convToReal = function (p, dim) {
                 bounds = layout.getBoundingBox()
                 if (dim == "w") {
-                    return map(p, bounds.bottomleft.x, bounds.topright.x, 0.1 * width, width);
+                    return map(p, bounds.bottomleft.x, bounds.topright.x, 0.1 * width, 0.88*width);
                 }
                 else {
-                    return map(p, bounds.bottomleft.y, bounds.topright.y, 0.05 * height, height)
+                    return map(p, bounds.bottomleft.y, bounds.topright.y, 0.05 * height, 0.9*height)
                 }
 
             }
@@ -219,7 +222,7 @@ function setup() {
             var top5 = Object.keys(state.beingHoveredData.top_5);
             $("#fthash").html(top5.map(v => "#" + v).join(", "))
             $(".fol_count").html(state.beingHoveredData.followers+" followers | ")
-            $(".tot_count").html(state.beingHoveredData.total)
+            $(".tot_count").html(state.beingHoveredData.total+" tweets")
             $(".pplthumbdiv").addClass("dimmed");
             $(`#${state.beingHovered}`).removeClass("dimmed");
             state.beingHovered in state.core.connections[state.currentCat] && state.core.connections[state.currentCat][state.beingHovered].map(v => {
@@ -315,19 +318,19 @@ const loopThrough = (src, person, mse) => {
 
     if (!src) return;
     if (src[0] == "Silence.") {
-        $("#tv").fadeOut(function () {
+        $("#tv").animate({"bottom":"-10px",opacity:0},500,function () {
             $(".show_date").text("")
             $(".show_tweet").text("Silence.")
             $(".show_person").text("")
-        }).fadeIn();
+        }).animate({'bottom': '20px',opacity:1}, 500);
     }
     else {
-        seed.txt && $("#tv").fadeOut(function () {
+        $("#tv").animate({"bottom":"-10px",opacity:0},500,function () {
             var a = new Date(seed.date + 19800000)
             $(".show_date").text(src[0] == "Silence." ? "" : `${a.getDate()}th Sep, ${a.getHours() > 12 ? 24 - a.getHours() : a.getHours()}:${a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes()} ${a.getHours() >= 12 ? "pm" : "am"}`)
             $(".show_tweet").text(src[0] == "Silence." ? "Silence." : (seed.txt || "").split(" ").filter(v => !v.startsWith("https:")).join(" "))
             $(".show_person").text(src[0] == "Silence." ? "" : seed.person)
-        }).fadeIn();
+        }).animate({'bottom': '20px',opacity:1}, 500);
     }
 
     state.interv = setInterval(function () {
@@ -340,19 +343,19 @@ const loopThrough = (src, person, mse) => {
             seed = src[state.indexes[state.currentCat] % src.length];
         }
         if (src[0] == "Silence.") {
-            $("#tv").fadeOut(function () {
+            $("#tv").animate({"bottom":"10px",opacity:0},500,function () {
                 $(".show_date").text("")
                 $(".show_tweet").text("Silence.")
                 $(".show_person").text("")
-            }).fadeIn();
+            }).animate({'bottom': '20px',opacity:1}, 500);
         }
         else {
-            seed.txt && $("#tv").fadeOut(function () {
+            $("#tv").animate({"bottom":"-10px",opacity:0},500,function () {
                 var a = new Date(seed.date + 19800000)
                 $(".show_date").text(src[0] == "Silence." ? "" : `${a.getDate()}th Sep, ${a.getHours() > 12 ? 24 - a.getHours() : a.getHours()}:${a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes()} ${a.getHours() >= 12 ? "pm" : "am"}`)
                 $(".show_tweet").text(src[0] == "Silence." ? "Silence." : (seed.txt || "").split(" ").filter(v => !v.startsWith("https:")).join(" "))
                 $(".show_person").text(src[0] == "Silence." ? "" : seed.person)
-            }).fadeIn();
+            }).animate({'bottom': '20px',opacity:1}, 500);
         }
     }, 6000)
 }
@@ -360,6 +363,7 @@ function whiteMode() {
     $(".message").css("display", "none");
     $(".whiteMode").css("display", "flex");
     state.whiteMode = true;
+    $(".fb_iframe_widget").css("opacity","1");
     $('#trig').trigger('click');
 }
 function draw() {
