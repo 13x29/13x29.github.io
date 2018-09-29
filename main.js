@@ -407,7 +407,7 @@ function draw() {
     }
     if (state.whiteMode) {
         var _vase = vases[state.currentCat]
-        image(_vase, width * 0.001, height - _vase.height * 0.75, _vase.width * 0.75, _vase.height * 0.75)
+        image(_vase, width * 0.04, height - _vase.height * 0.75, _vase.width * 0.75, _vase.height * 0.75)
         for (linea in state.lines) {
             myLine = state.lines[linea];
             //console.log(myLine[4])
