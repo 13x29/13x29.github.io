@@ -16,11 +16,12 @@ var state = {
     lines: {},
     interv: null,
     indexes: {},
-    Edgy: {}
+    Edgy: {},
+    isPaused:false
 };
 
 firsttime = true;
-setoftweets = ["Silence."]
+src = ["Silence."]
 
 function drawArrow(base, vec) {
     push();
@@ -53,6 +54,7 @@ $(".cato").on("click", function () {
     $(".fol_count").html("")
     $(".tot_count").html("")
     $(".category_name").html(new_cat)
+
     // var cat_info = state.core.category[new_cat];
     cat_info = state.core.cc[new_cat];
 
@@ -64,9 +66,9 @@ $(".cato").on("click", function () {
     $(".most_val").html(`(${cat_info["most_val"]})`);
     $(".hashes").html(`${Object.entries(state.core.hashtags[new_cat]).map(v => `<div class="hash">${v[0]} (${v[1]})</div>`).join("")}`);
     $(".info_cat").html(state.core.info[new_cat] || "");
-    setoftweets = state.core.tt.filter(v => v.category == new_cat).sort((a, b) => a.date - b.date);
-    if (setoftweets.length == 0) setoftweets = ["Silence."]
-    loopThrough(setoftweets, false, false);
+    src = state.core.tt.filter(v => v.category == new_cat).sort((a, b) => a.date - b.date);
+    if (src.length == 0) src = ["Silence."]
+    loopThrough();
 
     createGraph(new_cat);
     setupPeople(new_cat);
@@ -84,67 +86,121 @@ function setupPeople(cat) {
     // })
 }
 var renderer;
-function zim(n){
-    var size = map(n,1000,40000000,1,6);
-    if(n<1000)return `<span>${n}</span>`;
-    if(n<100000)return `<span style="font-size:${size}em">${parseInt(n/1000)}K</span>`;
-    if(n<10000000)return `<span style="font-size:${size}em">${parseInt(n/100000)}L</span>`;
-    else return `<span style="font-size:${size}em">${parseInt(n/10000000)}Cr</span>`;
+function zim(n) {
+    var size = map(n, 1000, 40000000, 1, 6);
+    if (n < 1000) return `<span>${n}</span>`;
+    if (n < 100000) return `<span style="font-size:${size}em">${parseInt(n / 1000)}K</span>`;
+    if (n < 10000000) return `<span style="font-size:${size}em">${parseInt(n / 100000)}L</span>`;
+    else return `<span style="font-size:${size}em">${parseInt(n / 10000000)}Cr</span>`;
 }
-function sheen(n){
-    return `<span style="font-size:${map(n,0,300,1,6)}em">${n}</span>`;
+function sheen(n) {
+    return `<span style="font-size:${map(n, 0, 300, 1, 6)}em">${n}</span>`;
 }
+let vases = {};
 function setup() {
+    let vase = loadImage("vases/vase.png");
+    let bolly = loadImage("vases/Bollywood.png");
+    let crea = loadImage("vases/Creativity.png");
+    let entr = loadImage("vases/Entrepreneurship.png");
+    let fait = loadImage("vases/Faith.png");
+    let forb = loadImage("vases/Forbes30Under30.png");
+    let jour = loadImage("vases/Journalism.png");
+    let law = loadImage("vases/Law.png");
+    let musi = loadImage("vases/Music.png");
+    let oppo = loadImage("vases/Opposition.png");
+    let spor = loadImage("vases/Sports.png");
+    let yout = loadImage("vases/YouTube.png");
+    vases = {
+        "Government": vase,
+        "States": vase,
+        "Bollywood": bolly,
+        "Creativity": crea,
+        "Entrepreneurship": entr,
+        "Faith": fait,
+        "Forbes30Under30": forb,
+        "Journalism": jour,
+        "Law": law,
+        "Music": musi,
+        "Opposition": oppo,
+        "Sports": spor,
+        "YouTube": yout
 
+    }
+
+    $(".playpause").click(function(){
+        state.isPaused = !state.isPaused;
+        if(state.isPaused){
+            $(this).html("Resume");
+            $(".onResume").css("display","inline-block")
+            clearInterval(state.interv)
+        }
+        else{
+            $(this).html("Pause")
+            $(".onResume").css("display","none")
+            loopThrough();
+        }
+    })
+    $(".visitlink").click(function(){
+        var id_str = $(".show_tweet").data("id_str");
+        window.open(`https://twitter.com/statuses/${id_str}`); 
+    })
+    $(".prev").click(function(){
+        state.indexes[state.currentCat]>0 && state.indexes[state.currentCat]--;
+        playCurrent();
+    })
+    $(".next").click(function(){
+        state.indexes[state.currentCat]++;
+        playCurrent();
+    })
     $(":checkbox").change(function (e) {
-        if($(this).val()=="hashtags"){
-        if (this.checked) {
-            $("#showfoll").prop("checked",false)
-            $("#showtotal").prop("checked",false)
-            $(".pplthumbdiv").each(function (i,v) {
-                var id = $(v).attr("id");
-                var topone = Object.keys(state.core.peeps.find(v => v.username == id).top_5)[0];
-                $(v).find(".person_name").first().html(topone?"#"+topone:"")
-            })
+        if ($(this).val() == "hashtags") {
+            if (this.checked) {
+                $("#showfoll").prop("checked", false)
+                $("#showtotal").prop("checked", false)
+                $(".pplthumbdiv").each(function (i, v) {
+                    var id = $(v).attr("id");
+                    var topone = Object.keys(state.core.peeps.find(v => v.username == id).top_5)[0];
+                    $(v).find(".person_name").first().html(topone ? "#" + topone : "")
+                })
+            }
+            else {
+                $(".pplthumbdiv").each(function (i, v) {
+                    $(v).find(".person_name").first().html($(this).data("name"))
+                })
+            }
         }
-        else {
-            $(".pplthumbdiv").each(function (i,v) {
-                $(v).find(".person_name").first().html($(this).data("name"))
-            })
+        else if ($(this).val() == "followers") {
+            if (this.checked) {
+                $("#showhash").prop("checked", false)
+                //$("#showfoll").prop("checked",false)
+                $("#showtotal").prop("checked", false)
+                $(".pplthumbdiv").each(function (i, v) {
+                    var id = $(v).attr("id");
+                    $(v).find(".person_name").first().html(zim(state.core.peeps.find(v => v.username == id).followers)).css("width", "inherit")
+                })
+            }
+            else {
+                $(".pplthumbdiv").each(function (i, v) {
+                    $(v).find(".person_name").first().html($(this).data("name"))
+                })
+            }
         }
-    }
-    else if($(this).val()=="followers"){
-        if(this.checked){
-            $("#showhash").prop("checked",false)
-            //$("#showfoll").prop("checked",false)
-            $("#showtotal").prop("checked",false)
-            $(".pplthumbdiv").each(function (i,v) {
-                var id = $(v).attr("id");
-                $(v).find(".person_name").first().html(zim(state.core.peeps.find(v => v.username == id).followers)).css("width","inherit")
-            })
+        else if ($(this).val() == "total") {
+            if (this.checked) {
+                $("#showhash").prop("checked", false)
+                $("#showfoll").prop("checked", false)
+                //$("#showtotal").prop("checked",false)
+                $(".pplthumbdiv").each(function (i, v) {
+                    var id = $(v).attr("id");
+                    $(v).find(".person_name").first().html(sheen(state.core.peeps.find(v => v.username == id).total)).css("width", "inherit")
+                })
+            }
+            else {
+                $(".pplthumbdiv").each(function (i, v) {
+                    $(v).find(".person_name").first().html($(this).data("name"))
+                })
+            }
         }
-        else {
-            $(".pplthumbdiv").each(function (i,v) {
-                $(v).find(".person_name").first().html($(this).data("name"))
-            })
-        }
-    }
-    else if($(this).val()=="total"){
-        if(this.checked){
-            $("#showhash").prop("checked",false)
-            $("#showfoll").prop("checked",false)
-            //$("#showtotal").prop("checked",false)
-            $(".pplthumbdiv").each(function (i,v) {
-                var id = $(v).attr("id");
-                $(v).find(".person_name").first().html(sheen(state.core.peeps.find(v => v.username == id).total)).css("width","inherit")
-            })
-        }
-        else {
-            $(".pplthumbdiv").each(function (i,v) {
-                $(v).find(".person_name").first().html($(this).data("name"))
-            })
-        }
-    }
     })
 
     createGraph = function (kat) {
@@ -181,10 +237,10 @@ function setup() {
             const convToReal = function (p, dim) {
                 bounds = layout.getBoundingBox()
                 if (dim == "w") {
-                    return map(p, bounds.bottomleft.x, bounds.topright.x, 0.1 * width, 0.88*width);
+                    return map(p, bounds.bottomleft.x, bounds.topright.x, 0.18 * width, 0.88 * width);
                 }
                 else {
-                    return map(p, bounds.bottomleft.y, bounds.topright.y, 0.05 * height, 0.9*height)
+                    return map(p, bounds.bottomleft.y, bounds.topright.y, 0.05 * height, 0.9 * height)
                 }
 
             }
@@ -216,13 +272,13 @@ function setup() {
             state.beingHovered = $(this).data("username");
 
             state.beingHoveredData = state.core.peeps.filter(p => p.username == state.beingHovered)[0];
-            $("#featured").html(state.beingHoveredData.name + " (@" + state.beingHoveredData.username + ")")
+            $("#featured").html(`${state.beingHoveredData.name} (<a target="_blank" href="https://twitter.com/${state.beingHoveredData.username}">@${state.beingHoveredData.username}</a>)`)
             var desc = state.beingHoveredData.description;
             $("#title").html(desc)
             var top5 = Object.keys(state.beingHoveredData.top_5);
             $("#fthash").html(top5.map(v => "#" + v).join(", "))
-            $(".fol_count").html(state.beingHoveredData.followers+" followers | ")
-            $(".tot_count").html(state.beingHoveredData.total+" tweets")
+            $(".fol_count").html(state.beingHoveredData.followers + " followers | ")
+            $(".tot_count").html(state.beingHoveredData.total + " tweets")
             $(".pplthumbdiv").addClass("dimmed");
             $(`#${state.beingHovered}`).removeClass("dimmed");
             state.beingHovered in state.core.connections[state.currentCat] && state.core.connections[state.currentCat][state.beingHovered].map(v => {
@@ -231,9 +287,6 @@ function setup() {
             Object.entries(state.core.connections[state.currentCat]).filter(v => v[1].indexOf(state.beingHovered) != -1).map(v => {
                 $(`#${v[0]}`).removeClass("dimmed");
             })
-            tempInd = 0;
-            setoftweets = state.core.tt.filter(v => v.username == state.beingHovered).sort((a, b) => a.date - b.date);
-            if (setoftweets.length == 0) setoftweets = ["Silence."]
         }
         else {
             $(".pplthumbdiv").removeClass("dimmed")
@@ -301,69 +354,43 @@ function loadedData(data) {
     })
 }
 
-
-const loopThrough = (src, person, mse) => {
-
-    var seed;
-    if (state.interv) clearInterval(state.interv)
-
-    if (person) {
-        seed = src[tempInd % src.length]
-    }
-    else {
-        if (!(state.currentCat in state.indexes)) state.indexes[state.currentCat] = 0;
-        state.indexes[state.currentCat]++;
-        seed = src[state.indexes[state.currentCat] % src.length];
-    }
-
-    if (!src) return;
-    if (src[0] == "Silence.") {
-        $("#tv").animate({"bottom":"-10px",opacity:0},500,function () {
-            $(".show_date").text("")
-            $(".show_tweet").text("Silence.")
-            $(".show_person").text("")
-        }).animate({'bottom': '20px',opacity:1}, 500);
-    }
-    else {
-        $("#tv").animate({"bottom":"-10px",opacity:0},500,function () {
+const playSilence= () => {
+    $("#tv").animate({ "bottom": "-10px", opacity: 0 }, 500, function () {
+        $(".show_date").text("")
+        $(".show_tweet").text("Silence.")
+        $(".show_person").text("")
+    }).animate({ 'bottom': '20px', opacity: 1 }, 500);
+}
+const playCurrent = () => {
+    seed = src[state.indexes[state.currentCat] % src.length];
+        $("#tv").animate({ "bottom": "-10px", opacity: 0 }, 500, function () {
             var a = new Date(seed.date + 19800000)
             $(".show_date").text(src[0] == "Silence." ? "" : `${a.getDate()}th Sep, ${a.getHours() > 12 ? 24 - a.getHours() : a.getHours()}:${a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes()} ${a.getHours() >= 12 ? "pm" : "am"}`)
-            $(".show_tweet").text(src[0] == "Silence." ? "Silence." : (seed.txt || "").split(" ").filter(v => !v.startsWith("https:")).join(" "))
+            $(".show_tweet").text(src[0] == "Silence." ? "Silence." : (seed.txt || "").split(" ").filter(v => !v.startsWith("https:")).join(" ")).attr("data-id_str",seed.id_str)
             $(".show_person").text(src[0] == "Silence." ? "" : seed.person)
-        }).animate({'bottom': '20px',opacity:1}, 500);
-    }
-
-    state.interv = setInterval(function () {
-        if (person) {
-            tempInd++;
-            seed = src[tempInd % src.length]
-        }
+        }).animate({ 'bottom': '20px', opacity: 1 }, 500);
+}
+const loopThrough = () => {
+if(state.interv) clearInterval(state.interv)
+    if (!(state.currentCat in state.indexes)) state.indexes[state.currentCat] = 0;
+    if (!src) return;
+    if (src[0] == "Silence.") playSilence();
+    else playCurrent();
+    if(!state.isPaused){
+        state.interv = setInterval(function () {
+        if (src[0] == "Silence.") playSilence();     
         else {
             state.indexes[state.currentCat]++;
-            seed = src[state.indexes[state.currentCat] % src.length];
-        }
-        if (src[0] == "Silence.") {
-            $("#tv").animate({"bottom":"10px",opacity:0},500,function () {
-                $(".show_date").text("")
-                $(".show_tweet").text("Silence.")
-                $(".show_person").text("")
-            }).animate({'bottom': '20px',opacity:1}, 500);
-        }
-        else {
-            $("#tv").animate({"bottom":"-10px",opacity:0},500,function () {
-                var a = new Date(seed.date + 19800000)
-                $(".show_date").text(src[0] == "Silence." ? "" : `${a.getDate()}th Sep, ${a.getHours() > 12 ? 24 - a.getHours() : a.getHours()}:${a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes()} ${a.getHours() >= 12 ? "pm" : "am"}`)
-                $(".show_tweet").text(src[0] == "Silence." ? "Silence." : (seed.txt || "").split(" ").filter(v => !v.startsWith("https:")).join(" "))
-                $(".show_person").text(src[0] == "Silence." ? "" : seed.person)
-            }).animate({'bottom': '20px',opacity:1}, 500);
+            playCurrent();
         }
     }, 6000)
+    }
 }
 function whiteMode() {
     $(".message").css("display", "none");
     $(".whiteMode").css("display", "flex");
     state.whiteMode = true;
-    $(".fb_iframe_widget").css("opacity","1");
+    $(".fb_iframe_widget").css("opacity", "1");
     $('#trig').trigger('click');
 }
 function draw() {
@@ -379,6 +406,8 @@ function draw() {
         }
     }
     if (state.whiteMode) {
+        var _vase = vases[state.currentCat]
+        image(_vase, width * 0.001, height - _vase.height * 0.75, _vase.width * 0.75, _vase.height * 0.75)
         for (linea in state.lines) {
             myLine = state.lines[linea];
             //console.log(myLine[4])
