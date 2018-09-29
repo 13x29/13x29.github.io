@@ -237,7 +237,7 @@ function setup() {
             const convToReal = function (p, dim) {
                 bounds = layout.getBoundingBox()
                 if (dim == "w") {
-                    return map(p, bounds.bottomleft.x, bounds.topright.x, 0.18 * width, 0.88 * width);
+                    return map(p, bounds.bottomleft.x, bounds.topright.x, 0.18 * width, 0.84 * width);
                 }
                 else {
                     return map(p, bounds.bottomleft.y, bounds.topright.y, 0.05 * height, 0.9 * height)
