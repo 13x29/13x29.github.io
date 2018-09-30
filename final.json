@@ -10,12 +10,12 @@
         "Journalism":"The overwheming response from the journalists is not surprising. Almost everyone seemed to have something positive to share about the verdict. Sudhir Chaudhary from Zee News who generally has a pro-government stance and the much admired journalists Ravish Kumar and Rahul Kanwar however chose to be silent. Interestingly, there were over 7 journalists who were talking about the issue before the verdict - indicating they were the most active of all groups on this issue. A high CC of the reactors suggests a strong bonding among the journalists who supported the verdict.",
         "Law":"Lawyers were live-tweeting the proceedings and retweeting users with poetic and goosebump-inducing quotes. Menaka Guruswamy, who was representing 20 petitioners from the IITs was most retweeted by the network. Some in the network like ChandraShekhar Azad however weren't very excited about the verdict. A close to high CC of 41% indicates that the lawyers who reacted to the verdict in this network know each other decently well.",
         "Sports":"The network of sports chose to be silent on the verdict with the exception of Yuvraj Singh and Anjum Chopra. However it should also be noted that sports people are the least active of all groups on Twitter - so we shouldn't be drawing strong inferences on their activity on Twitter. The ones who were active were mostly tweeting about the Asian Games.",
-        "Bollywood":"The big stars - Shahrukh Khan, Salman Khan and Amitabh Bachchan however decided to be silent. Kalki Koechlin has been a proponent of LGBTQ+ rights but she chose Instagram rather than Twitter to express her support - hence making strong inferences solely on this network might be misleading.",
+        "Bollywood":"The big stars - Shahrukh Khan, Salman Khan and Amitabh Bachchan however decided to be silent. Kalki Koechlin has been a proponent of LGBTQ+ rights but she chose Instagram rather than Twitter to express her support - hence making strong inferences solely on this network might be misleading. An extremely high CC of 70% for the reactors means that there exists a more tighter network inside this group which is pro-LGBTQ rights.",
         "Music":"The most active people of the Music network did comment on the verdict, but more than half of them chose not to talk. There isn't any distinct partition between the ones who reacted and those who didn't in the network as the two were uniformly distributed all over.",
-        "Creativity":"This group comprises of people from different creative fields such as fashion, literature, culinary and dance. Hence it has low clustering of just 10%. Yet, we see a large number of the people react positively to the verdict.",
-        "YouTube":"The YouTube network comprises of folks from the standup scene and brands like AIB and TVF. Decently connected together, the group has the most number of millenials, so one would expect a stronger reaction from them. The folks were talking mostly about their brands and upcoming programs. Many of those who did not react also weren't very active, so no harsh judgments.",
-        "Entrepreneurship":"This network comprises of startup founders and VC leaders of the nation. While there was reaction from some of them, it wasn't the most talked about topic in the network. The folks were talking about upcoming tech summits and conferences.",
-        "Forbes30Under30":"Every year, Forbes picks 30 groups/individuals under the age of 30 from different walks of life who have done something impactful in their fields. So it is no surprise that this group isn't really a close knitted network. Yet we see a close knitted network emerging here of which many did comment positively on the verdict. The rest weren't very active however on Twitter during the 3 days."
+        "Creativity":"This group comprises of people from different creative fields such as fashion, literature, culinary and dance. Hence it has low clustering of just 10%. Yet, we see a large number of the people react positively to the verdict. CCs of 0 for both reactors and non-reactors implies non-existent bonding in this group. So while they support the verdict individually, it is not because of network convection effects.",
+        "YouTube":"The YouTube network comprises of folks from the standup scene and brands like AIB and TVF. Decently connected together, the group has the most number of millenials, so one would expect a stronger reaction from them. The folks were talking mostly about their brands and upcoming programs. Many of those who did not react also weren't very active, so no harsh judgments. The CCs for the average, reactors and non-reactors are all close to 55% indicating that the network is uniformly bonded without a ideology based division.",
+        "Entrepreneurship":"This network comprises of startup founders and VC leaders of the nation. While there was reaction from some of them, it wasn't the most talked about topic in the network. The folks were talking about upcoming tech summits and conferences. In this network, the CC for reactors is 0 indicating the reactors don't know each other well at all. The dominant sub network in the group did not react to the verdict.",
+        "Forbes30Under30":"Every year, Forbes picks 30 groups/individuals under the age of 30 from different walks of life who have done something impactful in their fields. So it is no surprise that this group isn't really a close knitted network. Yet we see a close knitted network emerging here of which many did comment positively on the verdict. The rest weren't very active however on Twitter during the 3 days. The CCs suggest there is no strong bonding in this group either just like the Creativity domain."
 
     },
     "cc":{
@@ -9336,6 +9336,27 @@
             ]
         },
         "Journalism": {
+            "maya206":[
+                "sardesairajdeep",
+                "vikramchandra",
+                "BDUTT",
+                "rahulkanwal",
+                "ShekharGupta",
+                "fayedsouza",
+                "sagarikaghose",
+                "SachinKalbag",
+                "madversity",
+                "virsanghvi",
+                "PrannoyRoyNDTV",
+                "ShivAroor",
+                "Mrityunjoykjha",
+                "venkatananth",
+                "ravishndtv",
+                "madhutrehan",
+                "nehadixit123",
+                "RanaAyyub",
+                "bombaywallah"
+            ],
             "BDUTT": [
                 "sudhirchaudhary",
                 "vikramchandra",
@@ -9352,7 +9373,8 @@
                 "madhutrehan",
                 "nehadixit123",
                 "RanaAyyub",
-                "bombaywallah"
+                "bombaywallah",
+                "maya206"
             ],
             "rahulkanwal": [
                 "sudhirchaudhary",
@@ -9367,6 +9389,7 @@
                 "SachinKalbag",
                 "madversity",
                 "Kanchangupta",
+                "maya206",
                 "virsanghvi",
                 "PrannoyRoyNDTV",
                 "ShivAroor",
@@ -9405,6 +9428,7 @@
                 "ShekharGupta",
                 "fayedsouza",
                 "RegaJha",
+                "maya206",
                 "sagarikaghose",
                 "SachinKalbag",
                 "madversity",
@@ -9450,6 +9474,7 @@
                 "ShekharGupta"
             ],
             "ShekharGupta": [
+                "maya206",
                 "sardesairajdeep",
                 "vikramchandra",
                 "BDUTT",
@@ -9476,6 +9501,7 @@
                 "BDUTT",
                 "rahulkanwal",
                 "ShereenBhan",
+                "maya206",
                 "ShekharGupta",
                 "RegaJha",
                 "SachinKalbag",
@@ -9546,6 +9572,7 @@
                 "sardesairajdeep",
                 "vikramchandra",
                 "BDUTT",
+                "maya206",
                 "rahulkanwal",
                 "ShereenBhan",
                 "ShekharGupta",
@@ -9578,6 +9605,7 @@
                 "vikramchandra",
                 "rahulkanwal",
                 "ShereenBhan",
+                "maya206",
                 "ShekharGupta",
                 "sagarikaghose",
                 "virsanghvi",
@@ -9589,6 +9617,7 @@
                 "BDUTT",
                 "rahulkanwal",
                 "ShekharGupta",
+                "maya206",
                 "RegaJha",
                 "Kanchangupta",
                 "amritat",
@@ -9607,6 +9636,7 @@
                 "vikramchandra",
                 "BDUTT",
                 "rahulkanwal",
+                "maya206",
                 "ShereenBhan",
                 "ShekharGupta",
                 "fayedsouza",
@@ -9637,6 +9667,7 @@
                 "ShekharGupta",
                 "fayedsouza",
                 "RegaJha",
+                "maya206",
                 "SachinKalbag",
                 "madversity",
                 "virsanghvi",
@@ -9685,7 +9716,8 @@
                 "SachinKalbag",
                 "Mrityunjoykjha",
                 "amritat",
-                "ravishndtv"
+                "ravishndtv",
+                "maya206"
             ],
             "RanaAyyub": [
                 "sardesairajdeep",
@@ -9941,6 +9973,11 @@
                 "rashmibansal",
                 "PreetiShenoy"
             ],
+            "kausarmunir":[
+                "varungrover",
+                "Javedakhtarjadu",
+                "mrsfunnybones"
+            ],
             "chetan_bhagat": [
                 "Javedakhtarjadu",
                 "TheFarahKhan",
@@ -10028,6 +10065,7 @@
             "varungrover": [
                 "devduttmyth",
                 "ChefTZac",
+                "kausarmunir",
                 "TheVikasKhanna",
                 "jasmeenpatheja"
             ],

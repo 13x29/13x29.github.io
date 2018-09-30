@@ -240,7 +240,7 @@ function setup() {
                     return map(p, bounds.bottomleft.x, bounds.topright.x, 0.18 * width, 0.84 * width);
                 }
                 else {
-                    return map(p, bounds.bottomleft.y, bounds.topright.y, 0.05 * height, 0.9 * height)
+                    return map(p, bounds.bottomleft.y, bounds.topright.y, 0.05 * height, 0.85 * height)
                 }
 
             }
@@ -366,7 +366,7 @@ const playCurrent = () => {
         $("#tv").animate({ "bottom": "-10px", opacity: 0 }, 500, function () {
             var a = new Date(seed.date + 19800000)
             $(".show_date").text(src[0] == "Silence." ? "" : `${a.getDate()}th Sep, ${a.getHours() > 12 ? 24 - a.getHours() : a.getHours()}:${a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes()} ${a.getHours() >= 12 ? "pm" : "am"}`)
-            $(".show_tweet").text(src[0] == "Silence." ? "Silence." : (seed.txt || "").split(" ").filter(v => !v.startsWith("https:")).join(" ")).attr("data-id_str",seed.id_str)
+            $(".show_tweet").text(src[0] == "Silence." ? "Silence." : (seed.txt || "").split(" ").filter(v => !v.startsWith("https:")).join(" ")).data("id_str",seed.id_str)
             $(".show_person").text(src[0] == "Silence." ? "" : seed.person)
         }).animate({ 'bottom': '20px', opacity: 1 }, 500);
 }
@@ -407,7 +407,7 @@ function draw() {
     }
     if (state.whiteMode) {
         var _vase = vases[state.currentCat]
-        image(_vase, width * 0.04, height - _vase.height * 0.75, _vase.width * 0.75, _vase.height * 0.75)
+        image(_vase, width * 0.08, height - _vase.height * 0.5, _vase.width * 0.5, _vase.height * 0.5)
         for (linea in state.lines) {
             myLine = state.lines[linea];
             //console.log(myLine[4])
