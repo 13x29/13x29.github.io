@@ -1,7 +1,10 @@
-var btn = $(".continue");
-var state = {
+//Button for intro section
+const btn = $(".continue");
+
+//Holder for global variables, although I admit I got lazy and sprinkled other global variables
+let state = {
   contRadius: 0,
-  contStart: false,
+  contStart: false, //has continue been pressed
   maxLim: 0,
   whiteMode: false,
   logoMultiplier: 0.09,
@@ -19,33 +22,41 @@ var state = {
   Edgy: {},
   isPaused: false
 };
-
+//Some cryptic initializations
 firsttime = true;
 src = ["Silence."];
 
-function drawArrow(base, vec) {
+//function to draw directed arrows in p5js
+const drawArrow = (base, vec) => {
   push();
   translate(base.x, base.y);
   line(0, 0, vec.x, vec.y);
   rotate(vec.heading());
-  var arrowSize = 7;
+  const arrowSize = 7;
   translate(vec.mag() * 0.5, 0);
   triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize * 1.15, 0);
   pop();
-}
-function mousePressed() {}
+};
+
+//When continue pressed
 btn.on("click", function() {
   state.contStart = true;
   btn.addClass("white-btn");
 });
 
+//.cato is the class given to each of the category buttons in the left sidemenu
 $(".cato").on("click", function() {
   state.introSkip = true;
   $(".cato").removeClass("selected");
   $(this).addClass("selected");
   new_cat = $($(this).find(".name")[0]).text();
+
+  //save currentCat in the global variable state
   state.currentCat = new_cat;
+  //emoty the people array
   state.people = [];
+
+  //clear all the info tabs
   $("#featured").html("");
   $("#title").html("");
   $("#fthash").html("");
@@ -53,9 +64,10 @@ $(".cato").on("click", function() {
   $(".tot_count").html("");
   $(".category_name").html(new_cat);
 
-  // var cat_info = state.core.category[new_cat];
+  //extract cat info from state.core which gets hydrated when setup function is called by p5js
   cat_info = state.core.cc[new_cat];
 
+  //Clustering Coefficient values to be filled and other info at the right side
   $(".cc").html(
     `${parseInt(cat_info["avgCC"] * 10000) / 100}% (${
       cat_info["avgCC"] > 0.45 ? "High" : cat_info["avgCC"] > 0.2 ? "Medium" : "Low"
@@ -71,7 +83,6 @@ $(".cato").on("click", function() {
       cat_info["nontargetCC"] > 0.45 ? "High" : cat_info["nontargetCC"] > 0.2 ? "Medium" : "Low"
     })`
   );
-
   $(".most").html(cat_info["most"]);
   $(".most_val").html(`(${cat_info["most_val"]})`);
   $(".hashes").html(
@@ -80,34 +91,43 @@ $(".cato").on("click", function() {
       .join("")}`
   );
   $(".info_cat").html(state.core.info[new_cat] || "");
+  //filter the tweets by category, sort chronologically and save in src.
   src = state.core.tt.filter(v => v.category == new_cat).sort((a, b) => a.date - b.date);
   if (src.length == 0) src = ["Silence."];
+
+  //loop through the damn tweets
   loopThrough();
 
+  //Intitialize spirngy
   createGraph(new_cat);
+
+  //set up people data
   setupPeople(new_cat);
 });
 
-function setupPeople(cat) {
+const setupPeople = cat => {
   $(".pplthumbdiv").css("display", "none");
   $(`.${cat}`).css("display", "flex");
-  // state.core.peeps.filter(p => p.category === cat).forEach(person => {
-  //     state.people.push(new Person(person))
-  // })
-}
-var renderer;
-function zim(n) {
+};
+let renderer;
+
+//followers num to render
+const zim = n => {
   var size = map(n, 1000, 40000000, 1, 6);
   if (n < 1000) return `<span>${n}</span>`;
   if (n < 100000) return `<span style="font-size:${size}em">${parseInt(n / 1000)}K</span>`;
   if (n < 10000000) return `<span style="font-size:${size}em">${parseInt(n / 100000)}L</span>`;
   else return `<span style="font-size:${size}em">${parseInt(n / 10000000)}Cr</span>`;
-}
-function sheen(n) {
+};
+//Total Tweets
+const sheen = n => {
   return `<span style="font-size:${map(n, 0, 300, 1, 6)}em">${n}</span>`;
-}
+};
 let vases = {};
+
+//first function to get called
 function setup() {
+    //load images
   let vase = loadImage("vases/vase.png");
   let bolly = loadImage("vases/Bollywood.png");
   let crea = loadImage("vases/Creativity.png");
@@ -120,6 +140,7 @@ function setup() {
   let oppo = loadImage("vases/Opposition.png");
   let spor = loadImage("vases/Sports.png");
   let yout = loadImage("vases/YouTube.png");
+  //save loaded doms 
   vases = {
     Government: vase,
     States: vase,
@@ -136,7 +157,8 @@ function setup() {
     YouTube: yout
   };
 
-  $(".playpause").click(function() {
+  //event listener attach to the play/pause buttons of the tweeets panel
+  $(".playpause").click(()=>{
     state.isPaused = !state.isPaused;
     if (state.isPaused) {
       $(this).html("Resume");
@@ -206,7 +228,6 @@ function setup() {
       if (this.checked) {
         $("#showhash").prop("checked", false);
         $("#showfoll").prop("checked", false);
-        //$("#showtotal").prop("checked",false)
         $(".pplthumbdiv").each(function(i, v) {
           var id = $(v).attr("id");
           $(v)
